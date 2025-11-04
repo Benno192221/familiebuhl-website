@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | Meine Website</title>
+  <title>Home | Admin Portal</title>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #141E30, #243B55);
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
       color: #fff;
-      height: 100vh;
+      min-height: 100vh;
     }
 
+    /* Navigation */
     ul.navigation {
       list-style: none;
       display: flex;
@@ -22,6 +23,7 @@
       background: rgba(255,255,255,0.1);
       padding: 10px 0;
       backdrop-filter: blur(10px);
+      margin: 0;
     }
 
     ul.navigation li {
@@ -35,26 +37,51 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: transform 0.2s;
+      transition: transform 0.2s, color 0.3s;
     }
 
     ul.navigation a:hover {
       transform: scale(1.1);
+      color: #00ffff;
     }
 
-    ul.navigation .icon {
+    .icon {
       font-size: 24px;
       margin-bottom: 5px;
     }
 
-    ul.navigation li.active a {
+    li.active a {
       color: #00ffff;
     }
 
+    /* Inhalt */
     .content {
       text-align: center;
       margin-top: 100px;
       font-size: 24px;
+      animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .logout-btn {
+      margin-top: 20px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 8px;
+      background: #00ffff;
+      color: #000;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .logout-btn:hover {
+      background: #00c6ff;
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -80,11 +107,12 @@
 
   <div class="content">
     <h1>Willkommen, Admin 👋</h1>
-    <p>Du bist erfolgreich eingeloggt.</p>
-    <button onclick="logout()" style="margin-top:20px; padding:10px 20px; border:none; border-radius:8px; background:#00ffff; color:#000; cursor:pointer;">Logout</button>
+    <p>Du bist erfolgreich eingeloggt!</p>
+    <button class="logout-btn" onclick="logout()">Logout</button>
   </div>
 
   <script>
+    // Login-Check
     if (localStorage.getItem("loggedIn") !== "true") {
       window.location.href = "index.html";
     }
@@ -96,3 +124,4 @@
   </script>
 </body>
 </html>
+
