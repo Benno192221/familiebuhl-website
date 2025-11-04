@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Meine Website</title>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #141E30, #243B55);
+      color: #fff;
+      height: 100vh;
+    }
+
+    ul.navigation {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      background: rgba(255,255,255,0.1);
+      padding: 10px 0;
+      backdrop-filter: blur(10px);
+    }
+
+    ul.navigation li {
+      margin: 0 15px;
+      position: relative;
+    }
+
+    ul.navigation a {
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s;
+    }
+
+    ul.navigation a:hover {
+      transform: scale(1.1);
+    }
+
+    ul.navigation .icon {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    ul.navigation li.active a {
+      color: #00ffff;
+    }
+
+    .content {
+      text-align: center;
+      margin-top: 100px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <ul class="navigation"> 
+    <li class="active">
+      <a href="home.html">
+        <span class="icon">
+          <ion-icon name="home-outline"></ion-icon>
+        </span>
+        <span class="text">Home</span>
+      </a>
+    </li>
+    <li>
+      <a href="dashboard.html">
+        <span class="icon">
+          <ion-icon name="person-outline"></ion-icon>
+        </span>
+        <span class="text">Dashboard</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="content">
+    <h1>Willkommen, Admin 👋</h1>
+    <p>Du bist erfolgreich eingeloggt.</p>
+    <button onclick="logout()" style="margin-top:20px; padding:10px 20px; border:none; border-radius:8px; background:#00ffff; color:#000; cursor:pointer;">Logout</button>
+  </div>
+
+  <script>
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "index.html";
+    }
+
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
